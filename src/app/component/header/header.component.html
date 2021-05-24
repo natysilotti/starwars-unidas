@@ -1,0 +1,8 @@
+<div class = "header">
+    <img class="logo" routerLink="/" src="../../assets/images/star-wars.png" alt="Photo of logo" (click) = back()/>
+    
+    <div *ngIf = "!isDetailsPage" class = "input-container">        
+        <input type="text" placeholder="Search" id="search" name="search" #search style="width: 250px;"/>
+        <button type="submit" (click) = "sendSearch()"><img src="../../assets/images/search.png" alt="icon of search"/></button>
+    </div>
+</div>

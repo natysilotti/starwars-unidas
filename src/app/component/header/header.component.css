@@ -1,0 +1,40 @@
+.header{
+    height: 70px;
+    background-color: black;
+    color: aliceblue;
+    display: flex;
+    align-items: center;  
+    position: relative;
+}
+
+.logo {
+    height: 70px;
+    width: 100px;
+    padding-left: 20px;
+    display: inline-block;
+}
+
+
+.input-container {
+    display: inline-block;
+    position: absolute;
+    top: 40px;
+    left: 180px;
+}
+
+button{
+    width: 23px;
+    height: 22px;
+    padding: 0;
+}
+
+img {
+    width: 20px; 
+}
+
+
+
+
+
+  
+  

@@ -1,0 +1,17 @@
+html {
+    background-color: black;
+}
+body {
+    height: 100%;
+}
+
+header,
+head,
+body {
+    margin: 0;
+}
+
+h3 {
+    margin: 0;
+    justify-content: center;
+}

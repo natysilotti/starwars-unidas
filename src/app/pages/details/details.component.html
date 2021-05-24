@@ -1,0 +1,54 @@
+<app-header></app-header>
+
+<div *ngIf = "status != 200" class = "body-loader">
+    <div class="loader"></div>
+</div>
+
+<div *ngIf = "status === 200" class = "body">
+    <div *ngFor = "let detailsCharacter of detailsCharacters" class= "card"> 
+        <div class = "container">
+            
+            <h1>{{detailsCharacter.name}}</h1>
+          
+            <img src="../../assets/images/{{detailsCharacter.name}}.jpg" alt="Photo of character">
+            
+            <div class = "details1">
+                <ul>
+                    <li> Height: {{detailsCharacter.height}}</li>
+                    <li> Mass: {{detailsCharacter.mass}}</li>
+                    <li> Hair Color: {{detailsCharacter.hair_color}}</li>
+                    <li> Skin Color: {{detailsCharacter.skin_color}}</li>
+                    <li> Eye Color: {{detailsCharacter.eye_color}}</li>
+                    <li> Birth Year: {{detailsCharacter.birth_year}}</li>
+                    <li> Gender: {{detailsCharacter.gender}}</li>
+                </ul>
+            </div>
+
+            <div class = "details2">
+                <ul>
+                    <li> Homeworld: {{homeworld}}</li>
+                    <li> Films:</li>
+                    <ul *ngFor = "let film of resultFilms">
+                        <li>{{film}}</li>
+                    </ul>
+                    <li> Species:</li>
+                    <ul *ngFor = "let specie of resultSpecies">
+                        <li>{{specie}}</li>
+                    </ul>
+                    <li> Vehicles:</li>
+                    <ul *ngFor = "let vehicle of resultVehicles">
+                        <li> {{vehicle}}</li>
+                    </ul>
+                    <li> Starships:</li>
+                    <ul *ngFor = "let starship of resultStarshios">
+                        <li>{{starship}}</li>
+                    </ul>
+                    <li> Created: {{detailsCharacter.created}}</li>
+                    <li> Edited: {{detailsCharacter.edited}}</li>
+                    <li> URL: {{detailsCharacter.url}}</li>
+                </ul>
+            </div>
+
+        </div>      
+    </div>    
+</div>

@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+    <div *ngIf = "status != 200" class = "body-loader">
+        <div class="loader"></div>
+    </div>
+
+    <div class = "body">
+        <div *ngIf = "!isSearch">
+            <div *ngFor = "let character of characters" class = "card">
+                <div class = "container">
+                    <h3>{{character.name}}</h3>                  
+                     <img  src="../../assets/images/{{character.name}}.jpg" alt="Photo of character">                 
+                    <div>
+                        <button (click) = "characterDetails(character.name)"> More Details </button>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+       
+        <div *ngIf = "isSearch">
+            <div *ngFor = "let character of characters" class = "card">
+                <div class = "container">
+                    <h3>{{character.name}}</h3>                   
+                     <img  src="../../assets/images/{{character.name}}.jpg" alt="Photo of character">                
+                    <div>
+                        <button (click) = "characterDetails(character.name)"> More Details </button>
+                    </div>                   
+                </div>
+            </div>
+        </div>         
+    </div>  
+
+
