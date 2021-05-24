@@ -14,6 +14,7 @@ export class DetailsComponent extends SuperPage implements OnInit {
 
   character!: Results[]; 
   detailsCharacters: Results[] = [];
+  url: any;
   films = [];
   resultFilms: Array<String> = [];
   species = [];
@@ -38,39 +39,70 @@ export class DetailsComponent extends SuperPage implements OnInit {
 
     for (let x = 0; x < this.character.length; x++) {
       if (this.character[x].name.includes(this.parameters.character)) { 
-        this.detailsCharacters.push(this.character[x]);     
+        this.detailsCharacters.push(this.character[x]);  
       } 
     }
-   
-    let response = await this.apiStarwars.getData(this.detailsCharacters[0].homeworld); 
-    this.homeworld = response.data.name;
 
-    this.films = this.detailsCharacters[0].films;
-    for(let x = 0; x < this.films.length; x++){
-      let response = await this.apiStarwars.getData(this.films[x]);
-      this.resultFilms.push(response.data.title); 
-    }
-  
-    this.species = this.detailsCharacters[0].species;
-    for(let x = 0; x < this.species.length; x++){
-      let response = await this.apiStarwars.getData(this.species[x]);
-      this.resultSpecies.push(response.data.name);  
-    }
+    this.getHomeWorld()
+
+    this.getFilms();
+
+    this.getSpecies();
+
+    this.getVehicles();
     
-    this.vehicles = this.detailsCharacters[0].vehicles;
-    for(let x = 0; x < this.vehicles.length; x++){
-      let response = await this.apiStarwars.getData(this.vehicles[x]);
-      this.resultVehicles.push(response.data.name);  
-    }
-
-    this.starships = this.detailsCharacters[0].starships;
-    for(let x = 0; x < this.starships.length; x++){
-      let response = await this.apiStarwars.getData(this.starships[x]);
-      this.resultStarshios.push(response.data.name);  
-    }
+    this.getStarships();
 
     this.status = 200;
   
+  }
+
+  async getHomeWorld(){   
+    if(this.detailsCharacters[0].homeworld.includes("http")){
+      this.url = this.detailsCharacters[0].homeworld.replace("http","https");
+    }
+    let response = await this.apiStarwars.getData(this.detailsCharacters[0].homeworld); 
+    this.homeworld = response.data.name;
+  }
+
+  getFilms(){
+    this.films = this.detailsCharacters[0].films;
+    this.films.forEach(async (item) => {
+      let data = new URL(item);
+      this.url = data.href.replace("http", "https");
+      let response = await this.apiStarwars.getData(this.url);
+      this.resultFilms.push(response.data.title); 
+    });   
+  }
+
+  getSpecies(){
+    this.species = this.detailsCharacters[0].species;
+    this.species.forEach(async item => {
+      let data = new URL(item);
+      this.url = data.href.replace("http", "https");
+      let response = await this.apiStarwars.getData(this.url);
+      this.resultSpecies.push(response.data.name); 
+    });
+  }
+
+  getVehicles(){
+    this.vehicles = this.detailsCharacters[0].vehicles;
+    this.vehicles.forEach(async item => {
+      let data = new URL(item);
+      this.url = data.href.replace("http", "https");
+      let response = await this.apiStarwars.getData(this.url);
+      this.resultVehicles.push(response.data.name); 
+    });
+  }
+
+  getStarships(){
+    this.starships = this.detailsCharacters[0].starships;
+    this.starships.forEach(async item => {
+      let data = new URL(item);
+      this.url = data.href.replace("http", "https");
+      let response = await this.apiStarwars.getData(this.url);
+      this.resultStarshios.push(response.data.name); 
+    });
   }
 
   ngOnDestroy() {
