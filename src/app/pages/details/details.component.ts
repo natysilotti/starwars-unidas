@@ -61,7 +61,7 @@ export class DetailsComponent extends SuperPage implements OnInit {
     if(this.detailsCharacters[0].homeworld.includes("http")){
       this.url = this.detailsCharacters[0].homeworld.replace("http","https");
     }
-    let response = await this.apiStarwars.getData(this.detailsCharacters[0].homeworld); 
+    let response = await this.apiStarwars.getData(this.url); 
     this.homeworld = response.data.name;
   }
 
