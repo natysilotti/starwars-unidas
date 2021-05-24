@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { SuperPage } from 'src/app/pages/superpage/super-page.component';
-import { ApiStarwarsService } from 'src/app/service/api/api-starwars.service';
-import { Results } from 'src/app/models/Results';
+import { SuperPage } from '../../pages/superpage/super-page.component';
+import { ApiStarwarsService } from '../../service/api/api-starwars.service';
+import { Results } from '../../models/Results';
 
 @Component({
   selector: 'app-details',

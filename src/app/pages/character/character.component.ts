@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Results } from 'src/app/models/Results';
-import { ApiStarwarsService } from 'src/app/service/api/api-starwars.service';
-import { MessageService } from 'src/app/service/message/message.service';
+import { Results } from '../../models/Results';
+import { ApiStarwarsService } from '../../service/api/api-starwars.service';
+import { MessageService } from '../../service/message/message.service';
 
 @Component({
   selector: 'app-character',
